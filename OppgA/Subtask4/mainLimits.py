@@ -1,6 +1,6 @@
 from codefilesLimits import *
 
-filename=(r"C:\Users\Modellator\Documents\Kraftsystem\Prosjekt\example.xlsx")
+filename=(r"C:\Users\Modellator\Documents\Kraftsystem\ProjectTET4115\example.xlsx")
 file = xlrd.open_workbook(filename)
 busdata=file.sheet_by_index(0)
 linedata=file.sheet_by_index(1)
