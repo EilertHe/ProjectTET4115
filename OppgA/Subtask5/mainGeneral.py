@@ -1,4 +1,4 @@
-from codefiles import *
+from codefilesGeneral import *
 
 filename=(r"C:\Users\Modellator\Documents\Kraftsystem\Prosjekt\example.xlsx")
 file = xlrd.open_workbook(filename)
@@ -13,10 +13,13 @@ conv = False
 
 buses = np.array(list(testbuses.values())) #change from dict to array...
 Vprev=np.zeros(len(buses),dtype=np.float64)
+Vorg=Vprev
 count=0
 for b in buses:
     if b.type=='PQ':
-        b.vspec=1.0    
+        b.vspec=1.0
+    if b.type=='PV':
+        Vorg[b.number]=b.vspec      
         
 while not conv:
     count+=1
@@ -53,7 +56,7 @@ while not conv:
             Vprev[index]=b.vspec
 
     for ind in range(len(Vprev)): 
-        if buses[ind].exceedlim and  (buses[ind].qspec==buses[ind].qmax and Vprev[ind]>buses[ind].vspec) or (buses[ind].qspec==buses[ind].qmin and Vprev[ind]<buses[ind].vspec): #legge til under lovlig verdi greie
+        if buses[ind].exceedlim and  (buses[ind].qspec==buses[ind].qmax and Vprev[ind]>Vorg[ind]) or (buses[ind].qspec==buses[ind].qmin and Vprev[ind]<Vorg[ind]): #legge til under lovlig verdi greie
             buses[ind].type='PV'
             buses[ind].exceedlim=False
             Vprev[ind]=0

@@ -39,6 +39,7 @@ class bus:
         self.qmax=exceldata.cell_value(i,5) #float
         self.d=np.nan_to_num(exceldata.cell_value(i,6)) #float
         self.cap=exceldata.cell_value(i,7)*1j #float
+        self.pmax=exceldata.cell_value(i,8) # float, not necessary
         self.lines=[]
         self.type=None
         self.exceedlim=False
