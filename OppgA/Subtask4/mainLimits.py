@@ -38,10 +38,8 @@ while not conv:
         buses[i].vspec += deltax[k]
         k += 1
 
-    # #regn alle p og q
-    buses=reactivepowercalc(yBus,buses)
-    print(buses[0].vspec,buses[0].type)
-    #THIS CHECKS FOR LIMITS ON Qs, TO NOT CHECK FOR THIS: COMMENT OUT
+    buses=reactivepowercalc(yBus,buses) #finds reactive powers for PV buses
+    #THIS CHECKS FOR LIMITS ON Qs
     for index,b in enumerate(buses): #check for bus changes
         if b.qspec >= b.qmax and b.type=='PV':
             b.qspec=b.qmax
