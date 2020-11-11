@@ -1,6 +1,6 @@
 from codefilesBasic import *
-
-filename=(r"C:\Users\Modellator\Documents\Kraftsystem\ProjectTET4115\example.xlsx") #You need to add your own path
+#initializes the files from excel
+filename=(r"C:\example.xlsx") #Remember to change this to your own path for example.xlsx, it is important to include the first r outside ""
 file = xlrd.open_workbook(filename)
 busdata=file.sheet_by_index(0)
 linedata=file.sheet_by_index(1)
@@ -41,9 +41,9 @@ while not conv:
     if np.sum(abs(deltax)) < 10**-5:
 
         conv = True
-buses=slackpower(yBus,buses) 
+buses=slackpower(yBus,buses) #calculate the power needed from slack
         
- #Here are only visualizations, not important for code.
+ #This is only visualizations, not important for code.
  
 print("found a solution in: ",count,"iterations.")
 

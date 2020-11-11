@@ -5,7 +5,6 @@ from prettytable import PrettyTable
 python program for solving a loadflow problem with the newton raphson method
 
 created by: Erlend Løvstakken, Einar Ingmar Frøhaug, Eivind Roland, Håkon Broch and Eilert Henriksen
-Last updated: 30.10.2020
 
 """
 
@@ -30,7 +29,7 @@ def createbus(busdata,linedict): #creates a dictonary for all the buses in the s
 
 
 class bus:
-    def __init__(self,exceldata,i): #Må innholde hva
+    def __init__(self,exceldata,i):
         self.number=int(exceldata.cell_value(i,0)) #integer for busnr
         self.pspec=exceldata.cell_value(i,1) #float
         self.qspec=exceldata.cell_value(i,2) #float
@@ -43,11 +42,12 @@ class bus:
         self.lines=[]
         self.type=None
         self.exceedlim=False
+
         
 
 
 class line:
-    def __init__(self,exceldata,i): #må innholde hva?
+    def __init__(self,exceldata,i):
         self.fromval=int(exceldata.cell_value(i,0)) #int
         self.to=int(exceldata.cell_value(i,1)) #int
         self.R=exceldata.cell_value(i,2) #float
